@@ -39,6 +39,7 @@ class _CameraViewState extends State<CameraView> {
 
   @override
   void dispose() {
+    LoggingUtils.logStartFunction("dispose camera".toUpperCase());
     _cameraController.dispose();
     super.dispose();
   }
@@ -56,7 +57,7 @@ class _CameraViewState extends State<CameraView> {
       body: FutureBuilder<void>(
         future: _initializeCameraFuture,
         builder: (context, snapshot) {
-          LoggingUtils.logStartFunction("FutureBuilder".toUpperCase());
+          // LoggingUtils.logStartFunction("FutureBuilder".toUpperCase());
           if (snapshot.connectionState == ConnectionState.done) {
             return CameraPreview(_cameraController);
           } else {
