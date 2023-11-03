@@ -21,14 +21,14 @@ class _BarcodeScannerPageViewState extends State<BarcodeScannerPageView>
       backgroundColor: Colors.black,
       body: PageView(
         children: [
-          CameraView(),
+          cameraView(),
           Container(),
         ],
       ),
     );
   }
 
-  Widget CameraView() {
+  Widget cameraView() {
     return Builder(
       builder: (context) {
         return Stack(
@@ -57,7 +57,7 @@ class _BarcodeScannerPageViewState extends State<BarcodeScannerPageView>
                         height: 50,
                         child: FittedBox(
                           child: GestureDetector(
-                            onTap: () => getURLResult,
+                            onTap: () => getURLResult(),
                             child: barcodeCaptureTextResult(context),
                           ),
                         ),
@@ -98,8 +98,8 @@ class _BarcodeScannerPageViewState extends State<BarcodeScannerPageView>
     }
   }
 
-  void copyToCplipboard(String qrCode) {
-    Clipboard.setData(ClipboardData(text: qrCode));
+  void copyToCplipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text));
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text(LabelTextConstant.txtonCopyingclipBoard),
